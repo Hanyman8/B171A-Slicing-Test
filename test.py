@@ -9,7 +9,7 @@ def report_feature(solution_stats, student_stats):
         if line1 != line2:
             line1 = line1.strip()
             line2 = line2.strip()
-            ret.append(f'"{line2.rstrip()}" (should have been "{line1}") :warning:\n')
+            ret.append(f' * {line2.rstrip()}"(should have been "{line1}") :warning:\n')
             flag = False
 
     return flag, ret
@@ -45,7 +45,7 @@ def test(student_repo_path, solution_repo_path, **kwargs):
 
         status, msg = report_feature(solution_stats, student_stats)
         if not status:
-            messages.append(f' * {msg}')
+            messages.append(f'{msg}')
         else:
             messages.append(f'Everything OK')
 
