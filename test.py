@@ -1,4 +1,5 @@
 import pathlib
+import os
 
 
 def report_feature(solution_stats, student_stats):
@@ -35,6 +36,10 @@ def test(student_repo_path, solution_repo_path, **kwargs):
     messages = []
 
     for gcode in solution_repo_path.glob('*.gcode'):
+        if os.stat(student_repo_path / gcode.name).st_size == 0:
+            good = False
+            messages.append('File not yet imported')
+            continue
         messages.append(f'### {gcode.name}')
         messages.append('')
 
