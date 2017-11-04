@@ -8,6 +8,8 @@ def report_feature(solution_stats, student_stats):
 
     for line1, line2 in zip(solution_stats, student_stats):
         if line1 != line2:
+            if 'bed_shape' in line1:
+                ret.append(f' ### Perhaps you forgot to change printer to RebeliX :-) ')
             line1 = line1.strip()
             line2 = line2.strip()
             ret.append(f' * {line2.rstrip()}"(should have been "{line1}") :warning:\n')
